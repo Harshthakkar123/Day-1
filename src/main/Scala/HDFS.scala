@@ -77,10 +77,6 @@ object HDFS {
     val s3=sparkSession.sql("SELECT Count(Emp_ID),Year_of_Joining FROM EB Group By( Year_of_Joining) Order By (Year_of_Joining)")
    // s3.show()
 
-
-    //val s4=sparkSession.sql("SELECT Emp_ID,CAST(Salary AS float) AS Current_Salary,LastHiKe,CAST((Salary((Salary*REPLACE(LastHiKE,'%',' '))/100)) AS float ) AS Pre_Salary FROM EB")
-
-    //s4.show()
     val s4=sparkSession.sql("SELECT Emp_Id,Salary AS Current ,LastHike,CAST((Salary - ((Salary*REPLACE(LastHike,'%',''))/100)) AS float) AS previous FROM EB")
     s4.show()
 
